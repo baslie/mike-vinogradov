@@ -1,0 +1,46 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import VideoGallery from '../../components/VideoGallery.astro';
+import Footer from '../../components/Footer.astro';
+import { t } from '../../i18n/utils';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+const videoIds = [
+  'T13ofxbGIFg',
+  'UuTDxQoXIfE',
+  'm7uV7MZ9wgY',
+  'x0FL5NnNx08',
+  'TCXIs-VHV90',
+  '8LYQSKS6x-Y',
+  '1qfpLAmNtCE',
+  'lsyI0mGujZg',
+];
+---
+
+<Layout
+  title={t('ru', 'video.meta.title')}
+  description={t('ru', 'video.meta.description')}
+  lang="ru"
+  fullHeight={false}
+  pagePath="/video/"
+>
+  <main class="pt-6 pb-12 px-4 max-w-6xl mx-auto">
+    <a
+      href={`${base}/`}
+      class="inline-flex items-center gap-1.5 text-text-muted hover:text-text transition-colors text-sm mb-6"
+    >
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="15 18 9 12 15 6"></polyline>
+      </svg>
+      {t('ru', 'video.back')}
+    </a>
+
+    <h1 class="text-3xl font-semibold mb-3">{t('ru', 'video.title')}</h1>
+    <p class="text-sm text-text-muted mb-8 max-w-xl">{t('ru', 'tile4.description')}</p>
+
+    <VideoGallery ids={videoIds} />
+  </main>
+
+  <Footer lang="ru" />
+</Layout>

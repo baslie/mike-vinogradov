@@ -1,0 +1,22 @@
+---
+interface Props {
+  ids: string[];
+}
+
+const { ids } = Astro.props;
+---
+
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+  {ids.map((id) => (
+    <div class="aspect-video rounded-card overflow-hidden">
+      <iframe
+        src={`https://www.youtube-nocookie.com/embed/${id}`}
+        title="YouTube video"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+        loading="lazy"
+        class="w-full h-full border-0"
+      />
+    </div>
+  ))}
+</div>

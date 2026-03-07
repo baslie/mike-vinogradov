@@ -6,7 +6,14 @@ const isGitHubPages = !!process.env.GITHUB_PAGES;
 export default defineConfig({
   site: 'https://baslie.github.io',
   base: isGitHubPages ? '/mike-vinogradov' : '/',
-  trailingSlash: 'always',
+  trailingSlash: 'ignore',
+  i18n: {
+    defaultLocale: 'ru',
+    locales: ['ru', 'en'],
+    routing: {
+      prefixDefaultLocale: false,
+    },
+  },
   vite: {
     plugins: [tailwindcss()],
   },

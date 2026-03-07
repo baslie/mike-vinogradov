@@ -1,14 +1,20 @@
 ---
 import '../styles/global.css';
+import { getRelativeLocaleUrl } from 'astro:i18n';
 
 interface Props {
   title: string;
   description: string;
-  lang?: string;
+  lang?: 'ru' | 'en';
+  pagePath?: string;
+  fullHeight?: boolean;
+  showLangSwitcher?: boolean;
 }
 
-const { title, description, lang = 'ru' } = Astro.props;
-const base = import.meta.env.BASE_URL;
+const { title, description, lang = 'ru', pagePath = '/', fullHeight = true, showLangSwitcher = true } = Astro.props;
+const ruUrl = getRelativeLocaleUrl('ru', pagePath);
+const enUrl = getRelativeLocaleUrl('en', pagePath);
+const site = Astro.site?.origin ?? '';
 ---
 
 <!DOCTYPE html>
@@ -18,20 +24,25 @@ const base = import.meta.env.BASE_URL;
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{title}</title>
   <meta name="description" content={description}>
+  <link rel="icon" type="image/x-icon" href={`${import.meta.env.BASE_URL}favicon.ico`} />
+  <link rel="icon" type="image/png" sizes="32x32" href={`${import.meta.env.BASE_URL}favicon-32x32.png`} />
+  <link rel="icon" type="image/png" sizes="16x16" href={`${import.meta.env.BASE_URL}favicon-16x16.png`} />
+  <link rel="apple-touch-icon" sizes="180x180" href={`${import.meta.env.BASE_URL}apple-touch-icon.png`} />
+  <link rel="manifest" href={`${import.meta.env.BASE_URL}site.webmanifest`} />
+  <link rel="alternate" hreflang="ru" href={`${site}${ruUrl}`} />
+  <link rel="alternate" hreflang="en" href={`${site}${enUrl}`} />
+  <link rel="alternate" hreflang="x-default" href={`${site}${ruUrl}`} />
+  <meta name="base-url" content={import.meta.env.BASE_URL} />
 </head>
-<body class="min-h-screen lg:h-dvh lg:overflow-hidden">
+<body class:list={["min-h-screen relative", { "lg:h-dvh lg:overflow-hidden lg:flex lg:flex-col": fullHeight }]}>
 
-  <!-- ========== HEADER ========== -->
-  <header class="fixed top-0 inset-x-0 z-50 h-14 bg-bg/80 backdrop-blur-md">
-    <div class="h-full px-4 flex items-center justify-between">
-      <span class="text-sm font-light tracking-wide text-text-muted">mike‑vinogradov</span>
-      <div class="flex items-center gap-2 text-sm">
-        <a href={base} class="font-medium text-text">RU</a>
-        <span class="text-text-dim">/</span>
-        <a href={`${base}en/`} class="text-text-muted hover:text-text transition-colors duration-300">EN</a>
-      </div>
+  <!-- ========== LANGUAGE SWITCHER ========== -->
+  {showLangSwitcher && (
+    <div class="lang-switcher absolute top-4 right-4 z-10 flex items-center rounded-full p-0.5" style="background-color: var(--color-switch-pill)">
+      <a href={ruUrl} class:list={['lang-btn', { active: lang === 'ru' }]}>RU</a>
+      <a href={enUrl} class:list={['lang-btn', { active: lang === 'en' }]}>EN</a>
     </div>
-  </header>
+  )}
 
   <slot />
 

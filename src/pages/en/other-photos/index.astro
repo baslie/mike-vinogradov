@@ -1,0 +1,51 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import PhotoGallery from '../../../components/PhotoGallery.astro';
+import Lightbox from '../../../components/Lightbox.astro';
+import Footer from '../../../components/Footer.astro';
+import { t } from '../../../i18n/utils';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+const photoModules = import.meta.glob<{ default: string }>(
+  '/public/images/other-photos/*.{jpg,jpeg,png,webp}',
+  { eager: true }
+);
+
+const images = Object.keys(photoModules)
+  .sort()
+  .map((path) => path.replace('/public', ''));
+---
+
+<Layout
+  title={t('en', 'otherPhotos.meta.title')}
+  description={t('en', 'otherPhotos.meta.description')}
+  lang="en"
+  fullHeight={false}
+  pagePath="/other-photos/"
+>
+  <main class="pt-6 pb-12 px-4 max-w-6xl mx-auto">
+    <a
+      href={`${base}/en/`}
+      class="inline-flex items-center gap-1.5 text-text-muted hover:text-text transition-colors text-sm mb-6"
+    >
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="15 18 9 12 15 6"></polyline>
+      </svg>
+      {t('en', 'otherPhotos.back')}
+    </a>
+
+    <h1 class="text-3xl font-semibold mb-3">{t('en', 'otherPhotos.title')}</h1>
+    <p class="text-sm text-text-muted mb-8 max-w-xl">{t('en', 'tile3.description')}</p>
+
+    {images.length > 0 ? (
+      <PhotoGallery images={images} base={base} />
+    ) : (
+      <p class="text-text-muted">Photos will appear here.</p>
+    )}
+  </main>
+
+  <Footer lang="en" />
+
+  <Lightbox />
+</Layout>

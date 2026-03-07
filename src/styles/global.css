@@ -49,18 +49,21 @@
 @import "tailwindcss";
 
 @theme {
-  --color-bg:            #080808;
+  --color-bg:            #101010;
   --color-surface:       #181818;
   --color-surface-hover: #1a1a1a;
   --color-border:        #262626;
   --color-border-hover:  #404040;
   --color-text:          #f5f5f5;
-  --color-text-muted:    #737373;
+  --color-text-muted:    #a5a5a5;
   --color-text-dim:      #525252;
   --color-accent:        #d4d4d4;
 
   --font-display: 'Noto Sans', system-ui, sans-serif;
   --font-body:    'Noto Sans', system-ui, sans-serif;
+
+  --color-switch-pill:        rgba(255, 255, 255, 0.12);
+  --color-switch-pill-active: rgba(255, 255, 255, 0.25);
 
   --radius-card: 1rem;
   --radius-btn:  0.5rem;
@@ -90,9 +93,42 @@
   animation: fade-in-up 0.6s ease-out both;
 }
 
-.text-backdrop {
-  display: inline-block;
-  background: rgba(0, 0, 0, 0.5);
-  border-radius: 0.5rem;
+/* Instagram Stories ring */
+@keyframes spin-border {
+  to { transform: rotate(360deg); }
+}
+
+.story-ring {
+  position: relative;
+  border-radius: 9999px;
+  padding: 3px;
+  background: conic-gradient(from 0deg, #f59e0b, #ec4899, #8b5cf6, #f59e0b);
+  animation: spin-border 3s linear infinite;
+}
+
+.story-ring > * {
+  animation: spin-border 3s linear infinite reverse;
+}
+
+/* Language switcher pill */
+.lang-btn {
   padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: color 0.2s, background-color 0.2s;
+  background: transparent;
+  text-decoration: none;
+  line-height: 1.25rem;
+}
+
+.lang-btn:hover {
+  color: var(--color-text);
+}
+
+.lang-btn.active {
+  background-color: var(--color-switch-pill-active);
+  color: var(--color-text);
 }

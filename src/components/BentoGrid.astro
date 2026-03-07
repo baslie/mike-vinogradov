@@ -1,0 +1,98 @@
+---
+import { t, type Lang } from '../i18n/utils';
+import type { TranslationKey } from '../i18n/translations';
+import { getRelativeLocaleUrl } from 'astro:i18n';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const ruUrl = getRelativeLocaleUrl('ru', '/');
+const enUrl = getRelativeLocaleUrl('en', '/');
+---
+
+<main class="p-4 min-h-screen lg:min-h-0 lg:flex-1">
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 lg:grid-rows-3 gap-4 lg:h-full">
+
+    <!-- Tile 1: Avatar + Name -->
+    <div
+      class="md:col-span-2 lg:col-span-2 lg:row-span-1 rounded-card py-6 md:py-8 lg:px-8 flex items-center gap-5 md:gap-6 transition-colors duration-300 animate-fade-in relative"
+      style="animation-delay: 0ms"
+    >
+      <!-- Language Switcher -->
+      <div class="lang-switcher absolute top-0 right-0 z-10 flex items-center rounded-full p-0.5" style="background-color: var(--color-switch-pill)">
+        <a href={ruUrl} class:list={['lang-btn', { active: lang === 'ru' }]}>RU</a>
+        <a href={enUrl} class:list={['lang-btn', { active: lang === 'en' }]}>EN</a>
+      </div>
+      <div class="story-ring w-20 h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 shrink-0">
+        <div class="w-full h-full rounded-full bg-bg p-[2px]">
+          <img src={`${base}images/avatar.jpg`} alt={t(lang, 'tile1.avatarAlt')} class="w-full h-full rounded-full object-cover" loading="lazy">
+        </div>
+      </div>
+      <div>
+        <h1 class="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-text leading-tight">{t(lang, 'tile1.name')}</h1>
+        <p class="text-text-muted text-sm md:text-base mt-1 font-light">{t(lang, 'tile1.tagline')}</p>
+      </div>
+    </div>
+
+    <!-- Tile 2: Video (большая карточка) -->
+    <a
+      href={getRelativeLocaleUrl(lang, '/video')}
+      class="group lg:col-span-2 lg:row-span-2 md:col-span-2 lg:col-start-3 bg-surface rounded-card relative overflow-hidden min-h-[300px] md:min-h-[200px] transition-colors duration-300 animate-fade-in block"
+      style="animation-delay: 100ms"
+    >
+      <img src={`${base}images/video.jpg`} alt={t(lang, 'tile4.imgAlt')} class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">
+      <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+      <div class="absolute bottom-0 left-0 right-0 p-6 md:p-8 flex flex-col items-start gap-3">
+        <h2 class="font-display text-xl md:text-2xl font-bold text-text">{t(lang, 'tile4.title')}</h2>
+        <p class="text-sm text-text leading-relaxed max-w-md">{t(lang, 'tile4.description')}</p>
+        <span class="inline-block px-4 py-2 border border-white/20 text-sm text-text rounded-btn hover:bg-white/10 hover:border-white/50 transition-all duration-300">{t(lang, 'tile4.cta')}</span>
+      </div>
+    </a>
+
+    <!-- Tile 3: Landscape Photography -->
+    <a
+      href={getRelativeLocaleUrl(lang, '/other-photos')}
+      class="group lg:col-span-1 lg:row-span-2 bg-surface rounded-card relative overflow-hidden min-h-[300px] md:min-h-[200px] transition-colors duration-300 animate-fade-in block"
+      style="animation-delay: 200ms"
+    >
+      <img src={`${base}images/landscape.jpg`} alt={t(lang, 'tile3.imgAlt')} class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">
+      <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+      <div class="absolute bottom-0 left-0 right-0 p-6 md:p-8 flex flex-col items-start gap-3">
+        <h2 class="font-display text-xl md:text-2xl font-bold text-text">{t(lang, 'tile3.title')}</h2>
+        <p class="text-sm text-text leading-relaxed">{t(lang, 'tile3.description')}</p>
+        <span class="inline-block px-4 py-2 border border-white/20 text-sm text-text rounded-btn hover:bg-white/10 hover:border-white/50 transition-all duration-300">{t(lang, 'tile3.cta')}</span>
+      </div>
+    </a>
+
+    <!-- Tile 4: Travel Photo (маленькая карточка) -->
+    <a
+      href={getRelativeLocaleUrl(lang, '/travel-photo')}
+      class="group lg:col-span-1 lg:row-span-2 bg-surface rounded-card relative overflow-hidden min-h-[300px] md:min-h-[200px] transition-colors duration-300 animate-fade-in block"
+      style="animation-delay: 300ms"
+    >
+      <img src={`${base}images/travel.jpg`} alt={t(lang, 'tile2.imgAlt')} class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">
+      <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+      <div class="absolute bottom-0 left-0 right-0 p-6 md:p-8 flex flex-col items-start gap-3">
+        <h2 class="font-display text-xl md:text-2xl font-bold text-text">{t(lang, 'tile2.title')}</h2>
+        <p class="text-sm text-text leading-relaxed">{t(lang, 'tile2.description')}</p>
+        <span class="inline-block px-4 py-2 border border-white/20 text-sm text-text rounded-btn hover:bg-white/10 hover:border-white/50 transition-all duration-300">{t(lang, 'tile2.cta')}</span>
+      </div>
+    </a>
+
+    <!-- Tile 5: Contact -->
+    <div
+      class="md:col-span-2 lg:col-span-2 lg:row-span-1 rounded-card p-5 md:p-6 flex flex-col items-center justify-center gap-1 transition-colors duration-300 animate-fade-in"
+      style="animation-delay: 400ms"
+    >
+      <p class="text-sm text-text-muted font-light">{t(lang, 'tile5.label')}</p>
+      <a href="https://t.me/siberiawalk" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-text hover:text-accent transition-colors duration-300">
+        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+        <span class="text-sm font-medium">@siberiawalk</span>
+      </a>
+    </div>
+
+  </div>
+</main>
