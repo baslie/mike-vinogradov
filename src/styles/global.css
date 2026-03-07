@@ -1,4 +1,51 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600&display=swap');
+@font-face {
+  font-family: 'Noto Sans';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url('/fonts/noto-sans-v38-latin_cyrillic-300.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Noto Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/noto-sans-v38-latin_cyrillic-regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Noto Sans';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/noto-sans-v38-latin_cyrillic-italic.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Noto Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/fonts/noto-sans-v38-latin_cyrillic-500.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Noto Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('/fonts/noto-sans-v38-latin_cyrillic-600.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Noto Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/noto-sans-v38-latin_cyrillic-700.woff2') format('woff2');
+}
+
 @import "tailwindcss";
 
 @theme {
@@ -12,8 +59,8 @@
   --color-text-dim:      #525252;
   --color-accent:        #d4d4d4;
 
-  --font-display: 'Cormorant Garamond', 'Georgia', serif;
-  --font-body:    'Outfit', system-ui, sans-serif;
+  --font-display: 'Noto Sans', system-ui, sans-serif;
+  --font-body:    'Noto Sans', system-ui, sans-serif;
 
   --radius-card: 1rem;
   --radius-btn:  0.5rem;
@@ -41,4 +88,11 @@
 
 .animate-fade-in {
   animation: fade-in-up 0.6s ease-out both;
+}
+
+.text-backdrop {
+  display: inline-block;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 0.5rem;
+  padding: 0.25rem 0.75rem;
 }
