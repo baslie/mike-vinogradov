@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-bg:            #080808;
+  --color-surface:       #181818;
+  --color-surface-hover: #1a1a1a;
+  --color-border:        #262626;
+  --color-border-hover:  #404040;
+  --color-text:          #f5f5f5;
+  --color-text-muted:    #737373;
+  --color-text-dim:      #525252;
+  --color-accent:        #d4d4d4;
+
+  --font-display: 'Cormorant Garamond', 'Georgia', serif;
+  --font-body:    'Outfit', system-ui, sans-serif;
+
+  --radius-card: 1rem;
+  --radius-btn:  0.5rem;
+}
+
+@layer base {
+  body {
+    font-family: var(--font-body);
+    background-color: var(--color-bg);
+    color: var(--color-text);
+  }
+}
+
+/* Cascade fade-in animation */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in-up 0.6s ease-out both;
+}
