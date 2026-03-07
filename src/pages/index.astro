@@ -1,26 +1,13 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Михаил Виноградов — фотограф, видеомейкер, турист</title>
-  <meta name="description" content="Михаил Виноградов — фотограф, видеомейкер, турист. Travel photo, пейзажная фотография, работа с видео.">
-  <link rel="stylesheet" href="dist/output.css">
-</head>
-<body class="min-h-screen lg:h-dvh lg:overflow-hidden">
+---
+import Layout from '../layouts/Layout.astro';
 
-  <!-- ========== HEADER ========== -->
-  <header class="fixed top-0 inset-x-0 z-50 h-14 bg-bg/80 backdrop-blur-md">
-    <div class="h-full px-4 flex items-center justify-between">
-      <span class="text-sm font-light tracking-wide text-text-muted">mike‑vinogradov</span>
-      <div class="flex items-center gap-2 text-sm">
-        <a href="/" class="font-medium text-text">RU</a>
-        <span class="text-text-dim">/</span>
-        <a href="/en" class="text-text-muted hover:text-text transition-colors duration-300">EN</a>
-      </div>
-    </div>
-  </header>
+const base = import.meta.env.BASE_URL;
+---
 
+<Layout
+  title="Михаил Виноградов — фотограф, видеомейкер, турист"
+  description="Михаил Виноградов — фотограф, видеомейкер, турист. Travel photo, пейзажная фотография, работа с видео."
+>
   <!-- ========== BENTO GRID ========== -->
   <main class="p-4 pt-[calc(3.5rem+1rem)] min-h-screen lg:h-dvh">
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 lg:grid-rows-3 gap-4 lg:h-full">
@@ -52,7 +39,7 @@
         <div class="absolute bottom-0 left-0 right-0 p-6 md:p-8 space-y-3">
           <h2 class="font-display text-xl md:text-2xl font-bold text-text">Travel photo</h2>
           <p class="text-sm text-text-muted max-w-md leading-relaxed">Для хороших фотографий можно организовать и небольшую экспедицию. Есть опыт походов, опыт организации походов и разведок. С собой всегда всё необходимое оборудование и снаряжение.</p>
-          <a href="/portfolio#travel-photo" class="inline-block px-4 py-2 border border-white/20 text-sm text-text rounded-btn hover:bg-white/10 hover:border-white/50 transition-all duration-300">Примеры работ</a>
+          <a href={`${base}portfolio/#travel-photo`} class="inline-block px-4 py-2 border border-white/20 text-sm text-text rounded-btn hover:bg-white/10 hover:border-white/50 transition-all duration-300">Примеры работ</a>
         </div>
       </div>
 
@@ -69,7 +56,7 @@
         <div class="absolute bottom-0 left-0 right-0 p-5 space-y-2">
           <h2 class="font-display text-lg md:text-xl font-bold text-text">Пейзажная фотография</h2>
           <p class="text-xs text-text-muted leading-relaxed">Портрет, репортажная съёмка. Работа на результат, работа с моделями, с поиском необходимых локаций.</p>
-          <a href="/portfolio#other-photos" class="inline-block px-3 py-1.5 border border-white/20 text-xs text-text rounded-btn hover:bg-white/10 hover:border-white/50 transition-all duration-300">Примеры работ</a>
+          <a href={`${base}portfolio/#other-photos`} class="inline-block px-3 py-1.5 border border-white/20 text-xs text-text rounded-btn hover:bg-white/10 hover:border-white/50 transition-all duration-300">Примеры работ</a>
         </div>
       </div>
 
@@ -91,7 +78,7 @@
         <div class="p-5 space-y-2">
           <h2 class="font-display text-lg md:text-xl font-bold text-text">Работа с видео</h2>
           <p class="text-xs text-text-muted leading-relaxed">Съёмка видео. Сценарий. Звук. «Покрасс». Adobe Premier. Motion‑design в After Effects.</p>
-          <a href="/portfolio#video" class="inline-block px-3 py-1.5 border border-white/20 text-xs text-accent rounded-btn hover:bg-white/10 hover:border-white/50 transition-all duration-300">Примеры работ</a>
+          <a href={`${base}portfolio/#video`} class="inline-block px-3 py-1.5 border border-white/20 text-xs text-accent rounded-btn hover:bg-white/10 hover:border-white/50 transition-all duration-300">Примеры работ</a>
         </div>
       </div>
 
@@ -109,6 +96,4 @@
 
     </div>
   </main>
-
-</body>
-</html>
+</Layout>

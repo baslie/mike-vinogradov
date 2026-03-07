@@ -1,0 +1,39 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  lang?: string;
+}
+
+const { title, description, lang = 'ru' } = Astro.props;
+const base = import.meta.env.BASE_URL;
+---
+
+<!DOCTYPE html>
+<html lang={lang}>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{title}</title>
+  <meta name="description" content={description}>
+</head>
+<body class="min-h-screen lg:h-dvh lg:overflow-hidden">
+
+  <!-- ========== HEADER ========== -->
+  <header class="fixed top-0 inset-x-0 z-50 h-14 bg-bg/80 backdrop-blur-md">
+    <div class="h-full px-4 flex items-center justify-between">
+      <span class="text-sm font-light tracking-wide text-text-muted">mike‑vinogradov</span>
+      <div class="flex items-center gap-2 text-sm">
+        <a href={base} class="font-medium text-text">RU</a>
+        <span class="text-text-dim">/</span>
+        <a href={`${base}en/`} class="text-text-muted hover:text-text transition-colors duration-300">EN</a>
+      </div>
+    </div>
+  </header>
+
+  <slot />
+
+</body>
+</html>
