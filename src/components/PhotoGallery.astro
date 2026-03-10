@@ -10,11 +10,12 @@ const { images, base } = Astro.props;
 <div class="columns-2 lg:columns-3 gap-4">
   {images.map((src, i) => (
     <button
-      class="block w-full mb-4 break-inside-avoid cursor-zoom-in group"
+      class="block w-full mb-4 break-inside-avoid cursor-zoom-in group animate-on-scroll"
       data-lightbox-trigger
       data-index={i}
       data-src={`${base}${src}`}
       type="button"
+      style={i < 6 ? `transition-delay: ${i * 50}ms` : undefined}
     >
       <img
         src={`${base}${src}`}

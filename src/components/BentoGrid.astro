@@ -18,7 +18,7 @@ const enUrl = getRelativeLocaleUrl('en', '/');
 
     <!-- Tile 1: Avatar + Name -->
     <div
-      class="md:col-span-2 lg:col-span-2 lg:row-span-1 rounded-card py-6 md:py-8 lg:px-8 flex items-center gap-5 md:gap-6 transition-colors duration-300 animate-fade-in relative"
+      class="md:col-span-2 lg:col-span-2 lg:row-span-1 rounded-card py-6 md:py-8 lg:px-8 flex items-center gap-5 md:gap-6 transition-colors duration-300 animate-slide-up relative"
       style="animation-delay: 0ms"
     >
       <!-- Language Switcher -->
@@ -28,7 +28,7 @@ const enUrl = getRelativeLocaleUrl('en', '/');
       </div>
       <div class="story-ring w-20 h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 shrink-0">
         <div class="w-full h-full rounded-full bg-bg p-[2px]">
-          <img src={`${base}images/avatar.jpg`} alt={t(lang, 'tile1.avatarAlt')} class="w-full h-full rounded-full object-cover" loading="lazy">
+          <img src={`${base}images/avatar.jpg`} alt={t(lang, 'tile1.avatarAlt')} class="w-full h-full rounded-full object-cover">
         </div>
       </div>
       <div>
@@ -40,52 +40,52 @@ const enUrl = getRelativeLocaleUrl('en', '/');
     <!-- Tile 2: Video (большая карточка) -->
     <a
       href={getRelativeLocaleUrl(lang, '/video')}
-      class="group lg:col-span-2 lg:row-span-2 md:col-span-2 lg:col-start-3 bg-surface rounded-card relative overflow-hidden min-h-[300px] md:min-h-[200px] transition-colors duration-300 animate-fade-in block"
-      style="animation-delay: 100ms"
+      class="group lg:col-span-2 lg:row-span-2 md:col-span-2 lg:col-start-3 bg-surface rounded-card relative overflow-hidden min-h-[300px] md:min-h-[200px] transition-colors duration-300 animate-slide-up block"
+      style="animation-delay: 50ms"
     >
-      <img src={`${base}images/video.jpg`} alt={t(lang, 'tile4.imgAlt')} class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">
+      <img src={`${base}images/video.jpg`} alt={t(lang, 'tile4.imgAlt')} class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
       <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
       <div class="absolute bottom-0 left-0 right-0 p-6 md:p-8 flex flex-col items-start gap-3">
         <h2 class="font-display text-xl md:text-2xl font-bold text-text">{t(lang, 'tile4.title')}</h2>
         <p class="text-sm text-text leading-relaxed max-w-md">{t(lang, 'tile4.description')}</p>
-        <span class="inline-block px-4 py-2 border border-white/20 text-sm text-text rounded-btn hover:bg-white/10 hover:border-white/50 transition-all duration-300">{t(lang, 'tile4.cta')}</span>
+        <span class="inline-block px-4 py-2 border border-white/20 text-sm text-text rounded-btn hover:bg-white/10 hover:border-white/50 transition-colors duration-300">{t(lang, 'tile4.cta')}</span>
       </div>
     </a>
 
     <!-- Tile 3: Landscape Photography -->
     <a
       href={getRelativeLocaleUrl(lang, '/other-photos')}
-      class="group lg:col-span-1 lg:row-span-2 bg-surface rounded-card relative overflow-hidden min-h-[300px] md:min-h-[200px] transition-colors duration-300 animate-fade-in block"
-      style="animation-delay: 200ms"
+      class="group lg:col-span-1 lg:row-span-2 bg-surface rounded-card relative overflow-hidden min-h-[300px] md:min-h-[200px] transition-colors duration-300 animate-slide-up block"
+      style="animation-delay: 100ms"
     >
-      <img src={`${base}images/landscape.jpg`} alt={t(lang, 'tile3.imgAlt')} class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">
+      <img src={`${base}images/landscape.jpg`} alt={t(lang, 'tile3.imgAlt')} class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
       <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
       <div class="absolute bottom-0 left-0 right-0 p-6 md:p-8 flex flex-col items-start gap-3">
         <h2 class="font-display text-xl md:text-2xl font-bold text-text">{t(lang, 'tile3.title')}</h2>
         <p class="text-sm text-text leading-relaxed">{t(lang, 'tile3.description')}</p>
-        <span class="inline-block px-4 py-2 border border-white/20 text-sm text-text rounded-btn hover:bg-white/10 hover:border-white/50 transition-all duration-300">{t(lang, 'tile3.cta')}</span>
+        <span class="inline-block px-4 py-2 border border-white/20 text-sm text-text rounded-btn hover:bg-white/10 hover:border-white/50 transition-colors duration-300">{t(lang, 'tile3.cta')}</span>
       </div>
     </a>
 
     <!-- Tile 4: Travel Photo (маленькая карточка) -->
     <a
       href={getRelativeLocaleUrl(lang, '/travel-photo')}
-      class="group lg:col-span-1 lg:row-span-2 bg-surface rounded-card relative overflow-hidden min-h-[300px] md:min-h-[200px] transition-colors duration-300 animate-fade-in block"
-      style="animation-delay: 300ms"
+      class="group lg:col-span-1 lg:row-span-2 bg-surface rounded-card relative overflow-hidden min-h-[300px] md:min-h-[200px] transition-colors duration-300 animate-slide-up block"
+      style="animation-delay: 150ms"
     >
-      <img src={`${base}images/travel.jpg`} alt={t(lang, 'tile2.imgAlt')} class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">
+      <img src={`${base}images/travel.jpg`} alt={t(lang, 'tile2.imgAlt')} class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
       <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
       <div class="absolute bottom-0 left-0 right-0 p-6 md:p-8 flex flex-col items-start gap-3">
         <h2 class="font-display text-xl md:text-2xl font-bold text-text">{t(lang, 'tile2.title')}</h2>
         <p class="text-sm text-text leading-relaxed">{t(lang, 'tile2.description')}</p>
-        <span class="inline-block px-4 py-2 border border-white/20 text-sm text-text rounded-btn hover:bg-white/10 hover:border-white/50 transition-all duration-300">{t(lang, 'tile2.cta')}</span>
+        <span class="inline-block px-4 py-2 border border-white/20 text-sm text-text rounded-btn hover:bg-white/10 hover:border-white/50 transition-colors duration-300">{t(lang, 'tile2.cta')}</span>
       </div>
     </a>
 
     <!-- Tile 5: Contact -->
     <div
-      class="md:col-span-2 lg:col-span-2 lg:row-span-1 rounded-card p-5 md:p-6 flex flex-col items-center justify-center gap-1 transition-colors duration-300 animate-fade-in"
-      style="animation-delay: 400ms"
+      class="md:col-span-2 lg:col-span-2 lg:row-span-1 rounded-card p-5 md:p-6 flex flex-col items-center justify-center gap-1 transition-colors duration-300 animate-slide-up"
+      style="animation-delay: 200ms"
     >
       <p class="text-sm text-text-muted font-light">{t(lang, 'tile5.label')}</p>
       <a href="https://t.me/siberiawalk" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-text hover:text-accent transition-colors duration-300">

@@ -7,8 +7,8 @@ const { ids } = Astro.props;
 ---
 
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-  {ids.map((id) => (
-    <div class="aspect-video rounded-card overflow-hidden">
+  {ids.map((id, i) => (
+    <div class="aspect-video rounded-card overflow-hidden animate-on-scroll" style={i < 6 ? `transition-delay: ${i * 50}ms` : undefined}>
       <iframe
         src={`https://www.youtube-nocookie.com/embed/${id}`}
         title="YouTube video"
